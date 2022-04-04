@@ -105,7 +105,7 @@
         const tbal = await fetch('/.netlify/functions/transaction').then(tbal => tbal.json())
 
         //asighns specfic data from json
-        let value = Math.abs(tbal.amount.value)
+        let value = '$ '+Math.abs(tbal.amount.value)
         let decription = tbal.description
         let timedata = tbal.createdAt
       
