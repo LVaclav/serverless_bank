@@ -1,0 +1,57 @@
+.inline{
+    display: inline;
+}
+.orangetext{
+    color: #FF7A64;
+}
+.whitetext{
+    color: #FFFFFF;
+}
+html{
+    background-color: #242430;
+}
+body{
+    background-color: transparent;
+}
+.container{
+    background-color: #242440;
+    
+    width: fit-content;
+    height: fit-content;
+
+    text-align: center;
+    padding: 7px;
+
+    position:relative;
+    top:0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+
+    box-shadow: inset 2px 2px 2px #FF7A64, inset -2px -2px 2px orange;
+
+}
+.topbox{
+    margin-top: 10em;
+}
+.row-box{
+    margin-top: 1em;
+}
+.odometer.odometer-auto-theme, .odometer.odometer-theme-default {
+    display: inline-block;
+    vertical-align: middle;
+    *vertical-align: auto;
+    *zoom: 1;
+    *display: inline;
+    position: relative;
+  }
+.dollar{
+    display: inline-block;
+    vertical-align: middle;
+    *vertical-align: auto;
+    *zoom: 1;
+    *display: inline;
+    position: relative;
+    margin-bottom: 9px;
+}

@@ -1,0 +1,33 @@
+{
+  "name": "serverless_bank",
+  "version": "1.0.0",
+  "description": "Learn how to use serverless functions in less than 30 minutes!",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "postinstall": "netlify-lambda install"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LVaclav/serverless_bank.git",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "parcel index.html",
+    "build": "parcel build index.html"
+  },
+  "author": "Liam Cervenka",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/LVaclav/serverless_bank/issues"
+  },
+  "homepage": "https://github.com/LVaclav/serverless_bank#readme",
+  "devDependencies": {
+    "netlify-cli": "^8.14.1",
+    "netlify-lambda": "^2.0.15",
+    "node-fetch": "^3.2.3"
+  },
+  "dependencies": {
+    "axios": "^0.26.1",
+    "mc": "^1.0.6",
+    "node.js": "^0.0.1-security"
+  }
+}

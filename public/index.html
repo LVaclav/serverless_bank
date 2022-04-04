@@ -1,25 +1,134 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
+    <meta charset="UTF-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Jamstack Explorers - Up and Running with Serverless Functions</title>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="./styles.css"/>
+    <link href="https://github.hubspot.com/odometer/themes/odometer-theme-default.css" rel="stylesheet">    
+
+
+
+    <title>Testing get functions</title>
   </head>
   <body>
-    <h1>Up and Running with Serverless Functions</h1>
-    <button id="fetch-btn">Fetch</button>
-    <p id="response-output">Response Placeholder</p>
+    <script src="https://github.hubspot.com/odometer/odometer.js"></script>
+
+      <div class="container rounded topbox" align="centre">
+        <h1 class="whitetext">Liam Has</h1>
+        <h1 class="orangetext inline dollar">$</h1>
+        <h1 class="orangetext odometer inline" id="balance"></h1> 
+        <h1 class="whitetext">In His Spending Account</h1>
+        <p class="whitetext inline">He Last spent</p>
+        <p class="orangetext inline" id="transaction"></p>
+        <p class="whitetext inline">at</p>
+        <p class="orangetext inline" id="place"></p>
+        <p class="whitetext inline">at</p>
+        <p class="orangetext inline" id="time"></p>
+      </div>
+
+      <div class="container rounded row-box" align="centre">
+        <h1 class="whitetext">Thats</h1>
+        <h1 class="orangetext inline">$</h1>
+        <h1 class="orangetext inline" id="usd"></h1>
+        <h1 class="whitetext inline">USD</h1> 
+        <br>
+        <h1 class="orangetext inline" >$</h1>
+        <h1 class="orangetext inline" id="rubels"></h1>
+        <h1 class="whitetext inline">Rubels</h1> 
+        <br>
+        <h1 class="orangetext inline">$</h1>
+        <h1 class="orangetext inline" id="robux"></h1>
+        <h1 class="whitetext inline">Robux</h1> 
+        <br>
+        <h1 class="orangetext inline">$</h1>
+        <h1 class="orangetext inline" id="vbucks"></h1>
+        <h1 class="whitetext inline">V-Bucks</h1> 
+      </div>
+
+    
 
     <script>
-      document.addEventListener('DOMContentLoaded', () => {
-        const fetchBtn = document.getElementById('fetch-btn')
-        const responseText = document.getElementById('response-output')
 
-        fetchBtn.addEventListener('click', () => {
-          responseText.innerText = 'Static Text Replacement'
-        })
+      //html page points
+      document.addEventListener('DOMContentLoaded', () => {
+      const pagebalance = document.getElementById('balance')
+      const pagetbal = document.getElementById('transaction')
+      const place = document.getElementById('place')
+      const pagetime = document.getElementById('time')
+
+      //links code to html (curencies)
+      let pageusd = document.getElementById('usd')
+        let pagerubel = document.getElementById('rubels')
+        let pagerobux = document.getElementById('robux')
+        let pagevbux = document.getElementById('vbucks')
+    
+
+
+      window.addEventListener('load', async() => {
+      //balance
+        //calls bankauth function
+        const balance = await fetch('/.netlify/functions/bankauth').then(balance => balance.json())
+
+        
+
+        //defines curency value in acordence to aud
+        let usd = 0.75
+        let rubel = 66.14
+        let robux = 57.22
+        let vbucks = 83.68
+
+        //converts balance to curency
+        let myusd = (usd * balance)
+        let myrubel = (rubel * balance)
+        let myrobux = (robux * balance);
+        let myvbucks = (vbucks * balance)
+
+
+
+        //"prints"
+        pageusd.textContent = Math.round(myusd)
+        pagerubel.textContent = Math.round(myrubel)
+        pagerobux.textContent = Math.round(myrobux)
+        pagevbux.textContent = Math.round(myvbucks)
+          
+
+        
+        pagebalance.innerText = balance
+
+
+      //transactions
+
+        //calls transaction function
+        const tbal = await fetch('/.netlify/functions/transaction').then(tbal => tbal.json())
+
+        //asighns specfic data from json
+        let value = Math.abs(tbal.amount.value)
+        let decription = tbal.description
+        let timedata = tbal.createdAt
+      
+            
+        
+        //12hr time converter
+        let timeString = timedata.substring(11,19);
+          let timeString12hr = new Date('1970-01-01T' + timeString + 'Z')
+          .toLocaleTimeString('en-US',
+            {timeZone:'UTC',hour12:true,hour:'numeric',minute:'numeric'}
+          );
+          time = timeString12hr
+
+        //"prints"
+        pagetbal.innerText = value
+        place.innerHTML = decription
+        pagetime.innerText = time
+
+
       })
+      })
+
+     
     </script>
   </body>
 </html>
