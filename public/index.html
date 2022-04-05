@@ -72,31 +72,31 @@
         //calls bankauth function
         const balance = await fetch('/.netlify/functions/bankauth').then(balance => balance.json())
 
-        
+            //defines curency value in acordence to aud
+            let usd = 0.75
+            let rubel = 66.14
+            let robux = 57.22
+            let vbucks = 83.68
 
-        //defines curency value in acordence to aud
-        let usd = 0.75
-        let rubel = 66.14
-        let robux = 57.22
-        let vbucks = 83.68
-
-        //converts balance to curency
-        let myusd = (usd * balance)
-        let myrubel = (rubel * balance)
-        let myrobux = (robux * balance);
-        let myvbucks = (vbucks * balance)
+            //converts balance to curency
+            let myusd = (usd * balance)
+            let myrubel = (rubel * balance)
+            let myrobux = (robux * balance);
+            let myvbucks = (vbucks * balance)
 
 
 
-        //"prints"
-        pageusd.textContent = Math.round(myusd)
-        pagerubel.textContent = Math.round(myrubel)
-        pagerobux.textContent = Math.round(myrobux)
-        pagevbux.textContent = Math.round(myvbucks)
-          
+            //"prints"
+            pageusd.textContent = Math.round(myusd)
+            pagerubel.textContent = Math.round(myrubel)
+            pagerobux.textContent = Math.round(myrobux)
+            pagevbux.textContent = Math.round(myvbucks)
+              
 
-        
-        pagebalance.innerText = balance
+            //sets balance on page
+            pagebalance.innerText = balance
+
+
 
 
       //transactions
@@ -104,26 +104,25 @@
         //calls transaction function
         const tbal = await fetch('/.netlify/functions/transaction').then(tbal => tbal.json())
 
-        //asighns specfic data from json
-        let value = '$'+Math.abs(tbal.amount.value)
-        let decription = tbal.description
-        let timedata = tbal.createdAt
-      
+            //asighns specfic data from json
+            let value = '$'+Math.abs(tbal.amount.value)
+            let decription = tbal.description
+            let timedata = tbal.createdAt
+          
+                
             
-        
-        //12hr time converter
-        let timeString = timedata.substring(11,19);
-          let timeString12hr = new Date('1970-01-01T' + timeString + 'Z')
-          .toLocaleTimeString('en-US',
-            {timeZone:'UTC',hour12:true,hour:'numeric',minute:'numeric'}
-          );
-          time = timeString12hr
+            //12hr time converter
+            let timeString = timedata.substring(11,19);
+              let timeString12hr = new Date('1970-01-01T' + timeString + 'Z')
+              .toLocaleTimeString('en-US',
+                {timeZone:'UTC',hour12:true,hour:'numeric',minute:'numeric'}
+              );
+              time = timeString12hr
 
-        //"prints"
-        pagetbal.innerText = value
-        place.innerHTML = decription
-        pagetime.innerText = time
-
+            //"prints"
+            pagetbal.innerText = value
+            place.innerHTML = decription
+            pagetime.innerText = time
 
       })
       })
