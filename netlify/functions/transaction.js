@@ -15,7 +15,6 @@ exports.handler = async (event, context) => {
         body: JSON.stringify(trans.data.data[0].attributes)
         
     }
-
     
 }
 

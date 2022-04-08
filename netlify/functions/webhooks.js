@@ -1,7 +1,7 @@
 exports.handler = async (event, context) => {
     try {
-      const body = JSON.parse(event.body)
-      console.log(body)
+      const bodytext = (event.body)
+      console.log(bodytext)
       return {
         statusCode: 200
       }
@@ -9,4 +9,4 @@ exports.handler = async (event, context) => {
       return { statusCode: 500, body: err.toString() }
     }
   }
-  // webhook -> https://8be7-106-68-8-46.ngrok.io/.
+  // webhook -> https://8a79-120-16-236-208.ngrok.io/
