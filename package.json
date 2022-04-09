@@ -27,7 +27,9 @@
   },
   "dependencies": {
     "axios": "^0.26.1",
+    "faunadb": "^4.5.4",
     "mc": "^1.0.6",
-    "node.js": "^0.0.1-security"
+    "node.js": "^0.0.1-security",
+    "pusher": "^5.0.1"
   }
 }
