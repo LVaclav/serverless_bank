@@ -19,22 +19,24 @@
     <script src="https://github.hubspot.com/odometer/odometer.js"></script>
 
       <div class="nocontainer rounded topbox">
-        <h1 class="whitetext text-muted small">Send Money and watch it CHANGE</h1>
-        <h1 class="whitetext text-muted small">Pay-Id:</h1>
+        <h1 class="whitetext text-muted small">Send Money and watch it CHANGE!!</h1>
+        <h1 class="text-muted small ">Pay-Id:</h1>
         <h1 class="whitetext">vaclav@up.me</h1>
       </div>
 
       <div class="container rounded row-box" align="centre">
-        <h1 class="whitetext">Liam Has</h1>
+        <h1 class="whitetext" >Liam Has</h1>
         <h1 class="orangetext inline dollar">$</h1>
         <h1 class="orangetext odometer inline" id="balance"></h1> 
         <h1 class="whitetext">In His Spending Account</h1>
-        <p class="whitetext inline">He Last spent</p>
+        <p class="whitetext inline" id="firstText">He Last spent</p>
         <p class="orangetext inline" id="transaction"></p>
-        <p class="whitetext inline">at</p>
+        <p class="whitetext inline" id="secondText">at</p>
         <p class="orangetext inline" id="place"></p>
-        <p class="whitetext inline">at</p>
+        <p class="whitetext inline" id="thirdText">at</p>
         <p class="orangetext inline" id="time"></p>
+        <p class="whitetext" id="fourthText"></p>
+        <p class="orangetext" id="message"></p>
       </div>
 
       <div class="container rounded row-box" align="centre">
@@ -77,17 +79,7 @@
 
 
 
-      //html page to scirpt elements
-      const pagebalance = document.getElementById('balance')
-      const pagetbal = document.getElementById('transaction')
-      const place = document.getElementById('place')
-      const pagetime = document.getElementById('time')
-
-      //links code to html (curencies)
-      let pageusd = document.getElementById('usd')
-      let pagerubel = document.getElementById('rubels')
-      let pagerobux = document.getElementById('robux')
-      let pagevbux = document.getElementById('vbucks')
+     
     
 
 
@@ -97,43 +89,28 @@
       //calls bankauth function
       const balance = await fetch('/.netlify/functions/bankauth').then(balance => balance.json())
        
+          
 
-          //defines curency value in acordence to aud
-          let usd = 0.75
-          let rubel = 66.14
-          let robux = 57.22
-          let vbucks = 83.68
 
-          //converts balance to curency
-          let myusd = (usd * balance)
-          let myrubel = (rubel * balance)
-          let myrobux = (robux * balance);
-          let myvbucks = (vbucks * balance)
-
-          //"prints"
-          pageusd.textContent = Math.round(myusd)
-          pagerubel.textContent = Math.round(myrubel)
-          pagerobux.textContent = Math.round(myrobux)
-          pagevbux.textContent = Math.round(myvbucks)
             
 
-          //sets balance on page
-          pagebalance.innerText = balance
+        
 
 
 
 
     //transactions
 
-      //calls transaction function
-      const tbal = await fetch('/.netlify/functions/transaction').then(tbal => tbal.json())
+  //calls transaction function
+  const tbal = await fetch('/.netlify/functions/transaction').then(tbal => tbal.json())
 
-          //asighns specfic data from json
-          let value = '$'+Math.abs(tbal.amount.value)
-          let decription = tbal.description
-          let timedata = tbal.createdAt
-        
-              
+  console.log(tbal)
+    //asighns specfic data from json
+    let value = '$'+Math.abs(tbal.value)
+    let decription = tbal.description
+    let timedata = tbal.createdAt
+    let messagedata = tbal.message
+    let rawText = tbal.rawText
           
           //12hr time converter
           let timeString = timedata.substring(11,19);
@@ -143,20 +120,74 @@
             );
             time = timeString12hr
 
-          //"prints"
-          pagetbal.innerText = value
-          place.innerHTML = decription
-          pagetime.innerText = time
-    }
 
-    function playmoney () {
-      var audio = new Audio('/money.mp3');
-      audio.play();
-    }
+    const pagebalance = document.getElementById('balance')
+    const pagetbal = document.getElementById('transaction')
+    const place = document.getElementById('place')
+    const pagetime = document.getElementById('time')
+    const pagefirstText = document.getElementById('firstText')
+    const pagesecondText = document.getElementById('secondText')
+    const pagethirdText = document.getElementById('thirdText')
+    const pagefourthText = document.getElementById('fourthText')
+    const pageMessage = document.getElementById('message')
+
+
+  //logic to decide if the trnasaction is a pay ment or an outgoing
+    if (tbal.message == "" || tbal.message == null){
+      pagefirstText.innerText = 'He Last spent'
+      pagetbal.innerText = value
+      pagesecondText.innerText = 'at'
+      place.innerHTML = decription
+      pagethirdText.innerText = 'at'
+      pagetime.innerText = time
+    } else {
+      pagefirstText.innerText = 'Just Recieved'
+      pagetbal.innerText = value
+      pagesecondText.innerText = 'from'
+      place.innerHTML = rawText
+      pagethirdText.innerText = 'at'
+      pagetime.innerText = time
+      pagefourthText.innerText = 'They said:'
+      pageMessage.innerText = rawText
+    }        
+
+  //sets balance on page
+  pagebalance.innerText = balance
+
+  //curencie conversion
+    //links code to html (curencies)
+    let pageusd = document.getElementById('usd')
+    let pagerubel = document.getElementById('rubels')
+    let pagerobux = document.getElementById('robux')
+    let pagevbux = document.getElementById('vbucks')
+
+    //defines curency value in acordence to aud
+    let usd = 0.75
+    let rubel = 66.14
+    let robux = 57.22
+    let vbucks = 83.68
+
+    //converts balance to curency
+    let myusd = (usd * balance)
+    let myrubel = (rubel * balance)
+    let myrobux = (robux * balance);
+    let myvbucks = (vbucks * balance)
+
+    //"prints"
+    pageusd.textContent = Math.round(myusd)
+    pagerubel.textContent = Math.round(myrubel)
+    pagerobux.textContent = Math.round(myrobux)
+    pagevbux.textContent = Math.round(myvbucks)
+}
+
+  // function playmoney () {
+  //   var audio = new Audio('/money.mp3');
+  //   audio.play();
+  // }
       
-    window.addEventListener('load', async() => {
-      getbalance()
-      })
+window.addEventListener('load', async() => {
+  getbalance()
+  })
       
   
        
