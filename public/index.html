@@ -129,7 +129,7 @@
 
 
   //logic to decide if the trnasaction is a pay ment or an outgoing
-    if (tbal.message == "" && tbal.message == null){
+    if (messagedata == "" || tbal.message == null){
       pagefirstText.innerText = 'He Last spent'
       pagetbal.innerText = value
       pagesecondText.innerText = 'at'
