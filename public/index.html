@@ -103,14 +103,18 @@
     let messagedata = tbal.message
     let rawText = tbal.rawText
     
-          
-          //12hr time converter
-          let timeString = timedata.substring(11,19);
-            let timeString12hr = new Date('1970-01-01T' + timeString + '')
-            .toLocaleTimeString('en-AU',
-              {timeZone:'GMT',hour12:true,hour:'numeric',minute:'numeric'}
-            );
-            time = timeString12hr
+
+
+    let timedata1 = new Date(timedata).toLocaleString('en-US', { timeZone: 'Australia/Perth' });
+    let time = timedata1.substring(10,15)    
+          // //12hr time converter
+          // let timeString = timedata1.substring(10,18);
+          // console.log(timeString)
+          //   let timeString12hr = new Date('1970-01-01T' + timeString + 'Z')
+          //   .toLocaleTimeString('en-US',
+          //     {timeZone:'UTC',hour12:true,hour:'numeric',minute:'numeric'}
+          //   );
+          //   time = timeString12hr
 
 
     const pagebalance = document.getElementById('balance')
