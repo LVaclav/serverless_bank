@@ -88,16 +88,7 @@
       //balance
       //calls bankauth function
       const balance = await fetch('/.netlify/functions/bankauth').then(balance => balance.json())
-       
-          
-
-
-            
-
-        
-
-
-
+      
 
     //transactions
 
@@ -111,12 +102,13 @@
     let timedata = tbal.createdAt
     let messagedata = tbal.message
     let rawText = tbal.rawText
+    
           
           //12hr time converter
           let timeString = timedata.substring(11,19);
-            let timeString12hr = new Date('1970-01-01T' + timeString + 'Z')
-            .toLocaleTimeString('en-US',
-              {timeZone:'UTC',hour12:true,hour:'numeric',minute:'numeric'}
+            let timeString12hr = new Date('1970-01-01T' + timeString + '')
+            .toLocaleTimeString('en-AU',
+              {timeZone:'GMT',hour12:true,hour:'numeric',minute:'numeric'}
             );
             time = timeString12hr
 
@@ -133,7 +125,7 @@
 
 
   //logic to decide if the trnasaction is a pay ment or an outgoing
-    if (tbal.message == "" || tbal.message == null){
+    if (tbal.message == "" && tbal.message == null){
       pagefirstText.innerText = 'He Last spent'
       pagetbal.innerText = value
       pagesecondText.innerText = 'at'
@@ -148,7 +140,7 @@
       pagethirdText.innerText = 'at'
       pagetime.innerText = time
       pagefourthText.innerText = 'They said:'
-      pageMessage.innerText = rawText
+      pageMessage.innerText = messagedata
     }        
 
   //sets balance on page
