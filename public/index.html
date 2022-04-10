@@ -63,7 +63,7 @@
     <script>
 
       // Enable pusher logging - don't include this in production
-    Pusher.logToConsole = true;
+    // Pusher.logToConsole = true;
 
     var pusher = new Pusher('e97d9b08c41bd951e219', {
       cluster: 'ap1'
@@ -95,7 +95,7 @@
   //calls transaction function
   const tbal = await fetch('/.netlify/functions/transaction').then(tbal => tbal.json())
 
-  console.log(tbal)
+  // console.log(tbal)
     //asighns specfic data from json
     let value = '$'+Math.abs(tbal.value)
     let decription = tbal.description
