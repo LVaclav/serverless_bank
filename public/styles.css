@@ -51,6 +51,13 @@ body{
 .topbox{
     margin-top: 10em;
 }
+@media (max-width: 1000px) {
+
+    .topbox{
+        margin-top: 2em;
+    }
+
+}
 .row-box{
     margin-top: 1em;
 }
