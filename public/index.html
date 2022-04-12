@@ -103,18 +103,20 @@
   //calls transaction function
   const tbal = await fetch('/.netlify/functions/transaction').then(tbal => tbal.json())
 
-  // console.log(tbal)
+  console.log(tbal)
+
     //asighns specfic data from json
     let value = '$'+Math.abs(tbal.value)
     let decription = tbal.description
     let timedata = tbal.createdAt
     let messagedata = tbal.message
     let rawText = tbal.rawText
-    
 
-
+  
     let timedata1 = new Date(timedata).toLocaleString('en-US', { timeZone: 'Australia/Perth' });
-    let time = timedata1.substring(10,16)    
+    let time1 = timedata1.substring(10,15)   
+    let AMPM = timedata1.substring(19,22)
+    let time = time1 +' ' + AMPM
           // //12hr time converter
           // let timeString = timedata1.substring(10,18);
           // console.log(timeString)
