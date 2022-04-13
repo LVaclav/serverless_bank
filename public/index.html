@@ -103,7 +103,7 @@
   //calls transaction function
   const tbal = await fetch('/.netlify/functions/transaction').then(tbal => tbal.json())
 
-  console.log(tbal)
+  // console.log(tbal)
 
     //asighns specfic data from json
     let value = '$'+Math.abs(tbal.value)
@@ -112,19 +112,12 @@
     let messagedata = tbal.message
     let rawText = tbal.rawText
 
-  
-    let timedata1 = new Date(timedata).toLocaleString('en-US', { timeZone: 'Australia/Perth' });
-    let time1 = timedata1.substring(10,15)   
-    let AMPM = timedata1.substring(19,22)
-    let time = time1 +' ' + AMPM
-          // //12hr time converter
-          // let timeString = timedata1.substring(10,18);
-          // console.log(timeString)
-          //   let timeString12hr = new Date('1970-01-01T' + timeString + 'Z')
-          //   .toLocaleTimeString('en-US',
-          //     {timeZone:'UTC',hour12:true,hour:'numeric',minute:'numeric'}
-          //   );
-          //   time = timeString12hr
+  // i dont even know what the last part of this thig does but it fucking converts the time to 12 hour and gets rid of the seconds
+    let time = new Date('2022-04-14T01:01:03+10:00').toLocaleTimeString('en-US', { timeZone: 'Australia/Perth' }).match(/\d{2}:\d{2}|[AMP]+/g).join(' ')
+
+    // let time1 = timedata
+    // let AMPM = timedata1.substring(19,22)
+    // let time = time1 +' ' + AMPM
 
 
     const pagebalance = document.getElementById('balance')
