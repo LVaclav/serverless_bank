@@ -78,3 +78,7 @@ body{
     position: relative;
     margin-bottom: 9px;
 }
+.btn-link{
+    background-color: #242430;
+    border-color: transparent;
+}
