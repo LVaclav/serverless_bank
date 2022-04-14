@@ -87,7 +87,7 @@
 
     var channel = pusher.subscribe('bankauth');
     channel.bind('my-event', function(data) {
-      // console.log(JSON.stringify(data));
+      console.log(JSON.stringify(data));
       getbalance();
     });
 
