@@ -5,7 +5,6 @@ const pusher = new Pusher({
   key: "e97d9b08c41bd951e219",
   secret: "1b884675e10fd3461467",
   cluster: "ap1",
-  useTLS: true
 });
 
 

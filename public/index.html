@@ -70,8 +70,9 @@
 
     <script>
 
+    
       // Enable pusher logging - don't include this in production
-    // Pusher.logToConsole = true;
+    Pusher.logToConsole = true;
 
     var pusher = new Pusher('e97d9b08c41bd951e219', {
       cluster: 'ap1'
@@ -79,17 +80,9 @@
 
     var channel = pusher.subscribe('bankauth');
     channel.bind('my-event', function(data) {
-      // console.log(JSON.stringify(data));
+      console.log(JSON.stringify(data));
       getbalance();
     });
-
-
-
-
-
-     
-    
-
 
 
     async function getbalance () {
@@ -113,8 +106,10 @@
     let rawText = tbal.rawText
 
   // i dont even know what the last part of this thig does but it fucking converts the time to 12 hour and gets rid of the seconds
-    let time = new Date('2022-04-14T01:01:03+10:00').toLocaleTimeString('en-US', { timeZone: 'Australia/Perth' }).match(/\d{2}:\d{2}|[AMP]+/g).join(' ')
-
+    let time = new Date(timedata).toLocaleTimeString('en-US', { timeZone: 'Australia/Perth', hour: '2-digit', minute:'2-digit'})
+    // console.log(timedata)
+    // console.log(time)
+    
     // let time1 = timedata
     // let AMPM = timedata1.substring(19,22)
     // let time = time1 +' ' + AMPM
