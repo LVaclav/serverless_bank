@@ -79,7 +79,7 @@
 
     
       // Enable pusher logging - don't include this in production
-    Pusher.logToConsole = true;
+    // Pusher.logToConsole = true;
 
     var pusher = new Pusher('e97d9b08c41bd951e219', {
       cluster: 'ap1'
@@ -87,7 +87,7 @@
 
     var channel = pusher.subscribe('bankauth');
     channel.bind('my-event', function(data) {
-      console.log(JSON.stringify(data)),console.log('works'),getbalance();
+      getbalance();
     });
 
   
