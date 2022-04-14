@@ -72,7 +72,7 @@
 
     
       // Enable pusher logging - don't include this in production
-    Pusher.logToConsole = true;
+    // Pusher.logToConsole = true;
 
     var pusher = new Pusher('e97d9b08c41bd951e219', {
       cluster: 'ap1'
@@ -109,7 +109,7 @@
     let time = new Date(timedata).toLocaleTimeString('en-US', { timeZone: 'Australia/Perth', hour: '2-digit', minute:'2-digit'})
     // console.log(timedata)
     // console.log(time)
-    
+
     // let time1 = timedata
     // let AMPM = timedata1.substring(19,22)
     // let time = time1 +' ' + AMPM
