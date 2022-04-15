@@ -11,26 +11,9 @@
 .whitetext{
     color: #FFFFFF;
 }
-@media (min-width: 1000px) {
 
-    html{
-        /* background-color: #242430; */
-        background: linear-gradient(-45deg, #FF7A64, #242430);
-        background-size: 400% 400%;
-        animation: gradient 30s ease infinite;
-    }
-    @keyframes gradient {
-        0% {
-            background-position: 0% 50%;
-        }
-        50% {
-            background-position: 100% 50%;
-        }
-        100% {
-            background-position: 0% 50%;
-        }
-    }
-
+html{
+    /* background-color: #242430; */
 }
 
 body{
@@ -78,9 +61,6 @@ body{
 
     .topbox{
         margin-top: 2em;
-    }
-    html{
-    background-color: #242430;
     }
 
 }
