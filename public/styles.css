@@ -13,7 +13,7 @@
 }
 
 html{
-    /* background-color: #242430; */
+    background-color: #242430;
 }
 
 body{
@@ -62,7 +62,6 @@ body{
     .topbox{
         margin-top: 2em;
     }
-
 }
 .row-box{
     margin-top: 1em;
