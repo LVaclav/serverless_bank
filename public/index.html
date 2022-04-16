@@ -208,8 +208,7 @@
 
       const kanye = await axios.get('https://api.kanye.rest/')
       let quote = kanye.data.quote
-      pageQuote.innerText = quote
-      console.log(quote)
+      pageQuote.innerText = "\""+quote+"\""
     }
 
     window.addEventListener('load', async () => {
