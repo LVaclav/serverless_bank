@@ -11,6 +11,9 @@
   <link rel="stylesheet" type="text/css" href="./styles.css" />
   <link href="https://github.hubspot.com/odometer/themes/odometer-theme-default.css" rel="stylesheet">
   <script src="https://js.pusher.com/7.0/pusher.min.js"></script>
+  <script src="https://cdn.rawgit.com/adriancooney/console.image/c9e6d4fd/console.image.min.js"></script>
+
+
 
   <!-- Global site tag (gtag.js) - Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-4HVNT0QNR5"></script>
@@ -82,10 +85,18 @@
     <h1 class="orangetext inline" id="vbucks"></h1>
     <h1 class="whitetext inline">V-Bucks</h1>
   </div>
+
+  <div class="container rounded row-box">
+    <p class="whitetext no-pad">Liam Currently Has</p>
+    <p class="bluetext no-pad" id="kills"></p>
+    <p class="whitetext no-pad">All-time Kills In Fortnite</p>
+  </div>
+
   <div class="nocontainer rounded" style="padding-left: 3em; padding-right: 3em;">
-    <b class="" style="color: white; margin: 0%;" >Kanye Quote-</b>
+    <b class="" style="color: white; margin: 0%;">Kanye Quote-</b>
     <i class="font-italic" id="quote" style="color: white;">test</i>
   </div>
+
 
 
 
@@ -203,22 +214,34 @@
     //   audio.play();
     // }
 
-    async function kanye(){
+    async function kanye() {
       const pageQuote = document.getElementById('quote')
 
       const kanye = await axios.get('https://api.kanye.rest/')
       let quote = kanye.data.quote
-      pageQuote.innerText = "\""+quote+"\""
+      pageQuote.innerText = "\"" + quote + "\""
+    }
+
+    async function fortnite() {
+      const pageKills = document.getElementById('kills')
+
+      const bryn = await fetch('/.netlify/functions/fortnite').then(bryn => bryn.json())
+      pageKills.innerText = bryn
+    }
+
+    async function TRNfortnite() {
+      const stats = await fetch('/.netlify/functions/fortnat').then(stats => stats.json())
+      console.log(stats)
     }
 
     window.addEventListener('load', async () => {
       getbalance(),
-      kanye()
+        kanye(),
+        fortnite()
+        // TRNfortnite()
     })
 
-
-
-
+    // console.image('https://http.cat/200')
   </script>
 </body>
 
