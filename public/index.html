@@ -28,7 +28,8 @@
 
 <body>
   <script src="https://github.hubspot.com/odometer/odometer.js"></script>
-  <h2 class="inline">v2.13</h2>
+
+  <h2 class="inline">v2.14</h2>
 
   <div class="nocontainer rounded topbox">
     <h1 class="whitetext text-muted small">Send Money and watch it CHANGE!!</h1>
@@ -80,6 +81,10 @@
     <h1 class="orangetext inline">$</h1>
     <h1 class="orangetext inline" id="vbucks"></h1>
     <h1 class="whitetext inline">V-Bucks</h1>
+  </div>
+  <div class="nocontainer rounded">
+    <b class="" style="color: white; margin: 0%;" >Kanye Quote-</b>
+    <i class="font-italic" id="quote" style="color: white;">test</i>
   </div>
 
 
@@ -198,8 +203,18 @@
     //   audio.play();
     // }
 
+    async function kanye(){
+      const pageQuote = document.getElementById('quote')
+
+      const kanye = await axios.get('https://api.kanye.rest/')
+      let quote = kanye.data.quote
+      pageQuote.innerText = quote
+      console.log(quote)
+    }
+
     window.addEventListener('load', async () => {
-      getbalance()
+      getbalance(),
+      kanye()
     })
 
 
