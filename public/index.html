@@ -87,7 +87,7 @@
   </div>
 
   <div class="container rounded row-box">
-    <p class="whitetext no-pad">Liam Currently Has</p>
+    <p class="whitetext no-pad">Liam's friend Bryn Currently Has</p>
     <p class="bluetext no-pad" id="kills"></p>
     <p class="whitetext no-pad">All-time Kills In Fortnite</p>
   </div>
@@ -231,16 +231,11 @@
       pageKills.innerText = bryn
     }
 
-    async function TRNfortnite() {
-      const stats = await fetch('/.netlify/functions/fortnat').then(stats => stats.json())
-      console.log(stats)
-    }
 
     window.addEventListener('load', async () => {
       getbalance(),
         kanye(),
         fortnite()
-        // TRNfortnite()
     })
 
     // console.image('https://http.cat/200')
