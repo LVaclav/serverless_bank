@@ -10,6 +10,13 @@
   #  from = "/*"
   #  to = "/index.html"
   #  status = 200
+  
+[[plugins]]
+  package = "@sentry/netlify-build-plugin"
+
+  [plugins.inputs]
+    sentryOrg = ""
+    sentryProject = ""
 
   ## (optional) Settings for Netlify Dev
   ## https://github.com/netlify/cli/blob/main/docs/netlify-dev.md#project-detection
