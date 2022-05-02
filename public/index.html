@@ -197,7 +197,7 @@
 
       //defines curency value in acordence to aud
       let usd = 0.75
-      let rubel = 66.14
+      let rubel = 51.81
       let robux = 57.22
       let vbucks = 83.68
 
@@ -231,6 +231,7 @@
       const pageKills = document.getElementById('kills')
 
       const bryn = await fetch('/.netlify/functions/fortnite').then(bryn => bryn.json())
+      console.log(bryn)
       pageKills.innerText = bryn
     }
 
