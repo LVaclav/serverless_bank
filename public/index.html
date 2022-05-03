@@ -93,6 +93,10 @@
     <p class="whitetext no-pad">Liam's friend Bryn Currently Has</p>
     <p class="bluetext no-pad" id="kills"></p>
     <p class="whitetext no-pad">All-time Kills In Fortnite</p>
+    <br>
+    <p class="whitetext no-pad">Liam's friend Humphery Currently Has</p>
+    <p class="bluetext no-pad" id="hump"></p>
+    <p class="whitetext no-pad">All-time Kills In Fortnite</p>
   </div>
 
   <div class="nocontainer rounded" style="padding-left: 3em; padding-right: 3em;">
@@ -229,10 +233,15 @@
 
     async function fortnite() {
       const pageKills = document.getElementById('kills')
+      const humpKills = document.getElementById('hump')
 
       const bryn = await fetch('/.netlify/functions/fortnite').then(bryn => bryn.json())
       console.log(bryn)
       pageKills.innerText = bryn
+
+      const hump = await fetch('/.netlify/functions/hump').then(hump => hump.json())
+      console.log(hump)
+      humpKills.innerText = hump
     }
 
 
