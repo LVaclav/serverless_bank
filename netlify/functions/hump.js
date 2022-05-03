@@ -3,7 +3,7 @@ exports.handler = async (event, context) => {
 
     const axios = require('axios')
     
-    const hump = await axios.get('https://fortnite-api.com/v2/stats/br/v2/ea5b3afe64204e88b427810cc4445aec',{
+    const hump = await axios.get('https://fortnite-api.com/v2/stats/br/v2/bb1bc81537e944a7be353bd7157eb53e',{
         headers: {
             'authorization': 'b7ae0128-5100-48f1-af18-69858ea3d0c7'
         }});
@@ -11,6 +11,6 @@ exports.handler = async (event, context) => {
     return {
         statusCode: 200,
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(bryn.data.data.stats.all.overall.kills)
+        body: JSON.stringify(hump.data.data.stats.all.overall.kills)
     }
 }
