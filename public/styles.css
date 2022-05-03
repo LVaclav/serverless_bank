@@ -57,12 +57,12 @@ body{
 
 }
 .topbox{
-    margin-top: 10em;
+    margin-top: 2em;
 }
 @media (max-width: 1000px) {
 
     .topbox{
-        margin-top: 2em;
+        margin-top: 1em;
     }
 }
 .row-box{
